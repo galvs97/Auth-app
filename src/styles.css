@@ -1,0 +1,28 @@
+* {
+    font-family: "Roboto", sans-serif !important; 
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: #4c4c4c;
+}
+
+button {
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 0.8rem !important;
+    cursor: pointer;
+    background-color: #ececec; /* Cor de fundo verde */
+    color: #4c4c4c; /* Cor do texto */
+    text-align: center; 
+    display: inline-block; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #db9861; 
+  }

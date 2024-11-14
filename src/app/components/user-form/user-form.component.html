@@ -1,0 +1,94 @@
+<div class="p-4">
+    <p class="fw-bold fs-4">Renegocie Seu Crédito com Facilidade</p>
+    <small>Ajuste suas condições de pagamento. Faça uma simulação e confira as melhores ofertas para você.</small><br />
+    <small class="text-danger error-message" *ngIf="feedbackMessage">{{ feedbackMessage }}</small>
+    <div>
+        <div class="mb-2 mt-2 text-center">
+            <div class="btn-group" role="group">
+                <button type="button" class="icon-button"
+                    [ngClass]="{'activeButton': isIndividual, 'disableButton': !isIndividual}"
+                    (click)="onTypeChange('pf')">
+                    <fa-icon [icon]="faUser" class="icon-style"
+                        [ngClass]="{'activeButton': isIndividual, 'disable-icon-style': !isIndividual}"></fa-icon>
+                    Pessoa Física
+                </button>
+
+                <button type="button" class="icon-button"
+                    [ngClass]="{'activeButton': !isIndividual, 'disableButton': isIndividual}"
+                    (click)="onTypeChange('pj')">
+                    <fa-icon [icon]="faUsers" class="icon-style"
+                        [ngClass]="{'activeButton': !isIndividual, 'disable-icon-style': isIndividual}"></fa-icon>
+                    Pessoa Jurídica
+                </button>
+            </div>
+        </div>
+
+        <label class="sr-only" for="identificationNumber">{{ isIndividual ? 'CPF' : 'CNPJ' }}</label>
+        <div class="input-group mt-2 mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">{{ isIndividual ? 'CPF' : 'CNPJ' }}</div>
+            </div>
+            <input mask="CPF_CNPJ" type="text" class="form-control" id="identificationNumber"
+                [(ngModel)]="identificationNumber">
+        </div>
+
+        <div *ngIf="!showUserForm" class="d-grid gap-2 m-0">
+            <button type="button" class="m-0" (click)="fillUserInformation()" [disabled]="!isIdentificationValid()">Continuar</button>
+        </div>
+    </div>
+    <div *ngIf="showUserForm">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" class="mt-3 form-inline">
+            <label class="sr-only" for="name">Nome</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Nome</div>
+                </div>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+
+            <label class="sr-only" for="telephone">Telefone</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Telefone</div>
+                </div>
+                <input type="tel" mask="(00) 0 0000 0000" class="form-control" id="telephone"
+                    formControlName="telephone">
+            </div>
+
+            <label class="sr-only" for="email">Email</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Email</div>
+                </div>
+                <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+
+            <div *ngIf="isIndividual">
+                <label class="sr-only" for="birthDate">Data de Nascimento</label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Data de Nascimento</div>
+                    </div>
+                    <input type="date" class="form-control" id="birthDate" formControlName="birthDate">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="mt-3 mb-2" for="authMethod">Método de Autenticação</label> <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="authMethod" id="authMethod"
+                        value="googleAuth">
+                    <label class="form-check-label" for="authMethod">Google Authenticator</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="authMethod" id="authMethod"
+                        value="smsAuth">
+                    <label class="form-check-label" for="authMethod">SMS</label>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" [disabled]="form.invalid">Continuar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="bg-color container-md vh-100 d-flex justify-content-center align-items-center">
+    <section class="row border rounded-4">
+        <div class="col-4 ">
+            <div *ngIf="!isSmsAuth && !isGoogleAuth">
+                <app-user-form (userInfo)="chooseAuth($event)"></app-user-form>
+            </div>
+            <div *ngIf="!isSmsAuth && isGoogleAuth">
+                <app-google-auth-form [user]="user"></app-google-auth-form>
+            </div>
+            <div *ngIf="isSmsAuth && !isGoogleAuth">
+                <app-sms-auth-form [user]="user"></app-sms-auth-form>
+            </div>
+        </div>
+
+        <div class="backgroundMainImg col-8">
+            <img class="mainImg rounded mx-auto d-block"
+                alt="Ilustração garota branca tirando selfie com um copo de café na mão, roupa vermelha e calça jeans"
+                src="https://img.freepik.com/free-vector/millennial-girl-concept-illustration_114360-3341.jpg?t=st=1731533158~exp=1731536758~hmac=b5749e91fd8a53ebe1267bd1e0f5f164ee1f9e0bdcf8b54b06904fbeaa727439&w=1800">
+        </div>
+    </section>
+</div>

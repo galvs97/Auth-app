@@ -1,0 +1,24 @@
+.backgroundMainImg {
+    padding: 50px;
+    background-image: linear-gradient(to left, #001fbd 50%, #ff6200 50%);
+}
+
+.mainImg {
+    max-width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+.bg-color {
+    background-color: #ffffff;
+}
+
+button {
+    margin: 0 8px;
+    padding: 10px 20px;
+    font-size: 0.8rem !important;
+    cursor: pointer;
+}
+
+.error-message {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,19 @@
+<div class="p-4">
+    <p>Escaneie o QR Code com o Google Authenticator e insira o código. </p>
+
+    <small class="text-danger error-message" *ngIf="feedbackMessage">{{ feedbackMessage }}</small>
+
+    <img class="text-center" [src]="googleAuthQrCode" alt="QR Code para Google Authenticator">
+
+    <label class="sr-only" for="googleToken">Código</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Código</div>
+        </div>
+        <input type="tel" mask="000 000" class="form-control" id="googleToken" [(ngModel)]="googleToken">
+    </div>
+
+    <div class="d-grid gap-2">
+        <button type="button" (click)="validateToken()">Validar token</button>
+    </div>
+</div>
